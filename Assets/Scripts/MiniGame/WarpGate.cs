@@ -8,7 +8,9 @@ public class WarpGate : MonoBehaviour
 {
     [SerializeField] Color GizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 컬러 r g b 투명도
 
-    public Vector3 warpAreaSize = new Vector3(3f, 3f, 1f);
+    public Vector3 warpAreaSize = new Vector3(3f, 3f, 0f);
+
+    public string MiniGameScene;
 
     private void OnDrawGizmosSelected()
     {
@@ -22,12 +24,21 @@ public class WarpGate : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //SceneManager.LoadScene(MiniGameScene); 준비중
-            Debug.Log("미니 게임 존");
+            if (!string.IsNullOrEmpty(MiniGameScene))
+            {
+                SceneManager.LoadScene(MiniGameScene);
+            }
+            else
+            {
+                Debug.LogWarning("이동 불가");
+            }
+
+            Debug.Log("미니 게임 존 입장");
         }
         else
         {
-            Debug.Log("준비중");
+
         }
     }
+
 }
