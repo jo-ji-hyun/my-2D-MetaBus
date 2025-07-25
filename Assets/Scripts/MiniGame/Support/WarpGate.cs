@@ -12,6 +12,7 @@ public class WarpGate : MonoBehaviour
 
     public string MiniGameScene;
 
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = GizmoColor;

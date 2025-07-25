@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Plane : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class Plane : MonoBehaviour
     public bool isDead = false;
     bool _isFlap = false;
 
+    GameManager gameManager; // gameManager 호출
+
     void Start()
     {
         _animator = transform.GetComponentInChildren<Animator>();  // 애니메이터는 자식한테서 가져옴
         _rigidbody = GetComponent<Rigidbody2D>();                    // Rigidbody 2D는 내꺼 씀
+
 
         // === 혹시 안될까봐 ===
         if (_animator == null)
@@ -36,7 +40,7 @@ public class Plane : MonoBehaviour
     {
         if (isDead) //게임 오버
         {
-            //창을 띄워여함 메인씬으로 이동
+            gameManager.GameOver();
         }
         else
         {
