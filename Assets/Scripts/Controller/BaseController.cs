@@ -37,12 +37,12 @@ public class BaseController : MonoBehaviour
 
     private void Movement(Vector2 direction)
     {
-        direction = 5 * direction;
+        direction = 5 * direction;       // 속도 조절
 
         _rigidbody.velocity = direction; // rigidbody에서 속도 수치 조절
     }
 
-    // 캐릭터가 보는 방향으로 캐릭터 뒤집기
+    // === 캐릭터가 보는 방향으로 캐릭터 뒤집기 ===
     private void Rotate(Vector2 direction) 
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
