@@ -16,8 +16,6 @@ public class Plane : MonoBehaviour
     public bool isDead = false;
     bool _isFlap = false;
 
-    GameManager gameManager; // gameManager 호출
-
     void Start()
     {
         _animator = transform.GetComponentInChildren<Animator>();  // 애니메이터는 자식한테서 가져옴
@@ -40,7 +38,8 @@ public class Plane : MonoBehaviour
     {
         if (isDead) //게임 오버
         {
-            gameManager.GameOver();
+            GameManager.Instance.GameOver();
+            Debug.Log("게임 오버");
         }
         else
         {
