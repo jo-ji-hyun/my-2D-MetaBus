@@ -9,7 +9,7 @@ public class Plane : MonoBehaviour
     Rigidbody2D _rigidbody = null;
 
     // === 점프, 속도 수치 조절===
-    [SerializeField] private float flapForce = 6.0f;
+    [SerializeField] private float flapForce = 5.0f;
     [SerializeField] private float forwardSpeed = 3.0f;
 
     public bool isDead = false;

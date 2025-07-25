@@ -6,12 +6,12 @@ using Random = UnityEngine.Random; // 랜덤 사용
 public class Obstacle : MonoBehaviour
 {
     // === 장애물 위치 ===
-    public float highPosY = 1f;
-    public float lowPosY = -1f;
+    private float highPosY = 1f;
+    private float lowPosY = -1f;
 
     // === 통과할 구멍 ===
-    public float holeSizeMin = 2f;
-    public float holeSizeMax = 6f;
+    private float holeSizeMin = 2.0f;
+    private float holeSizeMax = 2.8f;
 
     // 위 아래 장애물 들고옴
     public Transform topObject;
