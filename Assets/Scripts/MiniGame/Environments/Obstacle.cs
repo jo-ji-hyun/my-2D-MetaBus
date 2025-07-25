@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random; // 랜덤 사용
 
 public class Obstacle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // === 장애물 위치 ===
+    public float highPosY = 1f;
+    public float lowPosY = -1f;
 
-    // Update is called once per frame
-    void Update()
+    // === 통과할 구멍 ===
+    public float holeSizeMin = 2f;
+    public float holeSizeMax = 6f;
+
+    // 위 아래 장애물 들고옴
+    public Transform topObject;
+    public Transform bottomObject;
+
+    // === 장애물 사이의 거리 ===
+    public float widthPadding = 3.5f;
+
+    // === 장애물 랜덤 위치 설정 ===
+    public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
     {
-        
+        float holeSize = Random.Range(holeSizeMin, holeSizeMax);
+        float halfHoleSize = holeSize / 2f;
+        topObject.localPosition = new Vector3(0, halfHoleSize);
+        bottomObject.localPosition = new Vector3(0, -halfHoleSize);
+
+        // === 마지막 x 값에서 x값을 증가시켜 거리를 확보함 ===
+        Vector3 placePosition = lastPosition + new Vector3(widthPadding, 0);
+        placePosition.y = Random.Range(lowPosY, highPosY);
+
+        transform.position = placePosition;
+
+        return placePosition;
     }
 }
