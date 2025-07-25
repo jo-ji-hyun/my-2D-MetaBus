@@ -24,6 +24,8 @@ public class PlayerController : BaseController
         Vector2 _mouselook = Input.mousePosition;          
         Vector2 _worldmouse = _camera.ScreenToWorldPoint(_mouselook);
         _look = (_worldmouse - (Vector2)transform.position).normalized;
+
+        Rotate(_look);
     }
 
 

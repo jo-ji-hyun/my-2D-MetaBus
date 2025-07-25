@@ -43,11 +43,16 @@ public class BaseController : MonoBehaviour
     }
 
     // === 캐릭터가 보는 방향으로 캐릭터 뒤집기 ===
-    private void Rotate(Vector2 direction) 
+    protected virtual void Rotate(Vector2 direction)
     {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        bool isLeft = Mathf.Abs(rotZ) > 90f;
+        if (direction.x > 0) // 마우스가 캐릭터의 오른쪽에 있을 때
+        {
+            characterSprite.flipX = false; // 기본 방향 (오른쪽)
+        }
+        else if (direction.x < 0) // 마우스가 캐릭터의 왼쪽에 있을 때
+        {
+            characterSprite.flipX = true; // 좌우 반전
 
-        characterSprite.flipX = isLeft;
+        }
     }
 }
