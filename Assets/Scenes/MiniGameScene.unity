@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708bd0bd27379a6489ec4c28890b9d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flapForce: 6
+  flapForce: 4
   forwardSpeed: 3
   isDead: 0
 --- !u!1 &1043530533

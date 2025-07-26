@@ -20,11 +20,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameManager = this;
+        Time.timeScale = 0.0f; // 중력 때문에 게임을 일시정지 시킴
     }
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown) // 아무키나 누르면 시작함 
         {
             title.SetActive(false); // 설명창 끄기
             GameStart();
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         Plane._isMoving = true;
+        Time.timeScale = 1.0f;
     }
 
     public void GameOver()

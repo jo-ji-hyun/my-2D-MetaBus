@@ -10,12 +10,12 @@ public class Plane : MonoBehaviour
     Rigidbody2D _rigidbody = null;
 
     // === 점프, 속도 수치 조절===
-    [SerializeField] private float flapForce = 5.0f;
+    [SerializeField] private float flapForce = 4.0f;
     [SerializeField] private float forwardSpeed = 3.0f;
 
     public bool isDead = false;
     bool _isFlap = false;
-    public static bool _isMoving = false;
+    public static bool _isMoving = false; // 설명창 닫히고 시작하도록 static 선언
 
     void Start()
     {
@@ -58,7 +58,7 @@ public class Plane : MonoBehaviour
         if (isDead)
             return;
 
-        if(_isMoving == true)
+        if(_isMoving == true) // 이동 시작
         {
             Vector3 velocity = _rigidbody.velocity;
             velocity.x = forwardSpeed;
