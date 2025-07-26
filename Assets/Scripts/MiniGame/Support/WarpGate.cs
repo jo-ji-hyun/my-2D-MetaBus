@@ -12,6 +12,7 @@ public class WarpGate : MonoBehaviour
 
     public string MiniGameScene;
 
+    private bool _isPlayerInArea = false;
 
     private void OnDrawGizmosSelected()
     {
@@ -20,26 +21,22 @@ public class WarpGate : MonoBehaviour
         Gizmos.DrawCube(transform.position, warpAreaSize);
     }
 
-    // ===플레이어 충돌시 씬전환===
+    // === 플레이어가 기즈모에 들어옴 ===
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if (!string.IsNullOrEmpty(MiniGameScene))
-            {
-                SceneManager.LoadScene(MiniGameScene);
-            }
-            else
-            {
-                Debug.LogWarning("이동 불가");
-            }
-
-            Debug.Log("미니 게임 존 입장");
-        }
-        else
-        {
-
+            _isPlayerInArea = true;
+           Debug.Log("이동을 위해 F키를 누르세요.");
         }
     }
 
+    // === F키 입력시 미니게임 입장 ===
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && _isPlayerInArea == true)
+        {
+            SceneManager.LoadScene(MiniGameScene);
+        }
+    }
 }
