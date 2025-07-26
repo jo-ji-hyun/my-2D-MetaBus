@@ -6,15 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // === 현재 씬을 찾아봐요(씬 추가시 추가해야함) ===
     [SerializeField] private string mainSceneName = "MainScene";     
     [SerializeField] private string miniGameSceneName = "MiniGameScene";
 
     private UIManager uiManager;
     private UIHelper uiHelper;
 
-    private bool _miniGameZone;
-    private int _currentScore;
-    private int _FinalScore;
+    private bool _miniGameZone; // 미니게임 입장시 true
+    private int _currentScore;  // 현재 점수
+    private int _FinalScore;    // 최종 점수
 
     public static GameManager Instance { get; private set; } // 싱글톤 선언
 
@@ -71,11 +72,12 @@ public class GameManager : MonoBehaviour
             uiHelper = FindObjectOfType<UIHelper>();
             Time.timeScale = 1.0f; // 움직임을 위해
             _miniGameZone = false;
+            _FinalScore = PlayerPrefs.GetInt("FinalScore", 0);  // 0점 부터 불러옴
 
             if (_FinalScore != 0)
             {
-                uiHelper.Setactive(0); // 미니게임 점수판 켜기
-                _FinalScore = PlayerPrefs.GetInt("FinalScore", 0);
+                Debug.Log("최고점수 저장");
+                uiHelper.Setactive(0);                           // 미니게임 점수판 켜기
                 uiHelper.ViewScoreBoard(_FinalScore);
             }
         }
@@ -84,16 +86,18 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         Plane._isMoving = true;
-        _miniGameZone = false;
+        _miniGameZone = false; // Update() 그만 호출하기 위해
         Time.timeScale = 1.0f;
+
         uiManager.Setactive(1); // 설명창 끄기
     }
 
     public void GameOver()
     {
+        // === 현재점수를 FinalScore로 저장합니다. ===
         PlayerPrefs.SetInt("FinalScore", _currentScore);
         PlayerPrefs.Save();
-        Debug.Log("최고점수 저장");
+
         SceneManager.LoadScene(mainSceneName);
     }
 

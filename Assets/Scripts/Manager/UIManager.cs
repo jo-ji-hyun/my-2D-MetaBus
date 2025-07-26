@@ -34,7 +34,6 @@ public class UIManager : MonoBehaviour //미니게임 점수 UI
         else
         {
             title.SetActive(false);
-            Debug.Log("설명창 닫을게~");
         }
             
     }

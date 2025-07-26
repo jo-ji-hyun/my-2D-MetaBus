@@ -24,7 +24,7 @@ public class UIHelper : MonoBehaviour // 메타버스 점수 UI
     public void ViewScoreBoard(int score)
     {
         scoreText.text = score.ToString();
-
+        Debug.Log("최고점수 변환 중");
     }
 
     public void Setactive(int x)
