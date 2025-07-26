@@ -19,4 +19,9 @@ public class UIManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    // === 게임 오버시 호출 ===
+    public void ViewScoreBoard(int score)
+    {
+        scoreText.text = score.ToString();
+    }
 }

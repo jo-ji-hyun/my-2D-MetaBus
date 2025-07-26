@@ -2314,7 +2314,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainScene: MainScene
   title: {fileID: 1475810191}
-  uiManager: {fileID: 0}
 --- !u!4 &1369430762
 Transform:
   m_ObjectHideFlags: 0
@@ -4784,10 +4783,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1842321151}
+  - {fileID: 223380043}
   - {fileID: 1012302320}
   - {fileID: 1043530534}
   - {fileID: 973706945}
   - {fileID: 1475810192}
   - {fileID: 6829536}
   - {fileID: 1369430762}
-  - {fileID: 223380043}

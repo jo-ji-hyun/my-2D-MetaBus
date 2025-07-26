@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public string MainScene;    // 게임 오버시 메인씬 호출
     public GameObject title;     // 설명창 호출
-    public UIManager uiManager;   // UI 매니저 호출
+    private UIManager uiManager;   // UI 매니저 호출
 
     static GameManager gameManager;
 
-    private int _currentScore = 0;
+    private int _currentScore;
+    private int _FinalScore = 0;
+    private bool _isGameOver = false;
 
     public static GameManager Instance
     {
@@ -22,12 +24,28 @@ public class GameManager : MonoBehaviour
     {
         gameManager = this;
         uiManager = FindObjectOfType<UIManager>();
+        
         Time.timeScale = 0.0f; // 중력 때문에 게임을 일시정지 시킴
     }
 
     private void Start()
     {
-        uiManager.UpdateScore(0); // 점수 초기화
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "MiniGameScene")
+        {
+            uiManager.UpdateScore(0); // 점수 초기화
+        }
+        else if(currentSceneName == "MainScene")
+        {
+            if(_isGameOver)
+            {
+                _FinalScore = PlayerPrefs.GetInt("FinalScore", 0);
+                uiManager.ViewScoreBoard(_FinalScore);
+                title.SetActive(true);
+            }
+
+        }
+
     }
 
     private void Update()
@@ -47,8 +65,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        _isGameOver = true;
+        PlayerPrefs.SetInt("FinalScore", _currentScore);
+        PlayerPrefs.Save(); 
         SceneManager.LoadScene(MainScene);
-        Debug.Log($"최종점수 : {_currentScore}");
     }
 
     public void AddScore(int score)
