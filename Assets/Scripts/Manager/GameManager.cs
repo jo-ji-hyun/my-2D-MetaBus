@@ -6,42 +6,56 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public string MainScene;    // 게임 오버시 메인씬 호출
-    public GameObject title;     // 설명창 호출
-    private UIManager uiManager;   // UI 매니저 호출
+
+    UIManager uiManager;
+    UIHelper uIHelper;
 
     static GameManager gameManager;
 
+    private bool _miniGameZone = false;
     private int _currentScore;
     private int _FinalScore = 0;
-    private bool _isGameOver = false;
 
-    public static GameManager Instance
-    {
-        get { return gameManager; } // 싱글톤 선언
-    }
+    public static GameManager Instance { get; private set; } // 싱글톤 선언
 
     private void Awake()
     {
-        gameManager = this;
+
         uiManager = FindObjectOfType<UIManager>();
-        
+        uIHelper = FindObjectOfType <UIHelper>();
+
+        // === 싱글톤 선언 2 ===
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         Time.timeScale = 0.0f; // 중력 때문에 게임을 일시정지 시킴
     }
 
     private void Start()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
+        uIHelper.Setactive(1);
+        string currentSceneName = SceneManager.GetActiveScene().name; // 현재 Scene의 이름을 받아옴
+
         if (currentSceneName == "MiniGameScene")
         {
+            _miniGameZone = true;
             uiManager.UpdateScore(0); // 점수 초기화
         }
         else if(currentSceneName == "MainScene")
         {
-            if(_isGameOver)
+            Debug.Log(_FinalScore);
+            Time.timeScale = 1.0f;
+
+            if (_FinalScore != 0)
             {
+                uIHelper.Setactive(0);
                 _FinalScore = PlayerPrefs.GetInt("FinalScore", 0);
-                uiManager.ViewScoreBoard(_FinalScore);
-                title.SetActive(true);
+                uIHelper.ViewScoreBoard(_FinalScore);
             }
 
         }
@@ -50,9 +64,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown) // 아무키나 누르면 시작함
+        if (Input.anyKeyDown && _miniGameZone == true) // 미니게임에서 아무키나 누르면 시작함
         {
-            title.SetActive(false); // 설명창 끄기
+            uiManager.Setactive(1); // 설명창 끄기
             GameStart();
         }
     }
@@ -65,7 +79,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _isGameOver = true;
         PlayerPrefs.SetInt("FinalScore", _currentScore);
         PlayerPrefs.Save(); 
         SceneManager.LoadScene(MainScene);
