@@ -15,6 +15,7 @@ public class Plane : MonoBehaviour
 
     public bool isDead = false;
     bool _isFlap = false;
+    public static bool _isMoving = false;
 
     void Start()
     {
@@ -57,20 +58,24 @@ public class Plane : MonoBehaviour
         if (isDead)
             return;
 
-        Vector3 velocity = _rigidbody.velocity;
-        velocity.x = forwardSpeed;
-
-        if (_isFlap)                    //점프
+        if(_isMoving == true)
         {
-            velocity.y += flapForce;
-            _isFlap = false;
+            Vector3 velocity = _rigidbody.velocity;
+            velocity.x = forwardSpeed;
+
+            if (_isFlap)                    //점프
+            {
+                velocity.y += flapForce;
+                _isFlap = false;
+            }
+
+            _rigidbody.velocity = velocity; //속도 조절
+
+            // === 포물선으로 떨어지도록 만듬 ===
+            float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -90, 90);
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        _rigidbody.velocity = velocity; //속도 조절
-
-        // === 포물선으로 떨어지도록 만듬 ===
-        float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -90, 90);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
 

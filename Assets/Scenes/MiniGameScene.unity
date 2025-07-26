@@ -2194,6 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainScene: MainScene
+  title: {fileID: 1475810191}
 --- !u!4 &1369430762
 Transform:
   m_ObjectHideFlags: 0

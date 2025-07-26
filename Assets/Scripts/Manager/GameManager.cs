@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public string MainScene; // 게임 오버시 메인씬 호출
+    public GameObject title; // 설명창 호출
 
     static GameManager gameManager;
 
@@ -21,6 +22,19 @@ public class GameManager : MonoBehaviour
         gameManager = this;
     }
 
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            title.SetActive(false); // 설명창 끄기
+            GameStart();
+        }
+    }
+
+    public void GameStart()
+    {
+        Plane._isMoving = true;
+    }
 
     public void GameOver()
     {
