@@ -24,7 +24,6 @@ public class BackGroundLoop : MonoBehaviour
     // === 장애물과 충돌시 마지막 장애물위치 다음으로 ===
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered: " + collision.name);
 
         if (collision.CompareTag("BackGround")) // Environment일 경우
         {

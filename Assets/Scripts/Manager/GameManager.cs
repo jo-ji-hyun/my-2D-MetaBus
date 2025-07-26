@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown) // 아무키나 누르면 시작함 
+        if (Input.anyKeyDown) // 아무키나 누르면 시작함
         {
             title.SetActive(false); // 설명창 끄기
             GameStart();
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene(MainScene);
+        Debug.Log($"최종점수 : {_currentScore}");
     }
 
     public void AddScore(int score)

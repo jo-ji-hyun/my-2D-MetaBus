@@ -40,7 +40,6 @@ public class Plane : MonoBehaviour
         if (isDead) //게임 오버
         {
             GameManager.Instance.GameOver();
-            Debug.Log("게임 오버");
         }
         else
         {
