@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public string MainScene; // 게임 오버시 메인씬 호출
-    public GameObject title; // 설명창 호출
+    public string MainScene;    // 게임 오버시 메인씬 호출
+    public GameObject title;     // 설명창 호출
+    public UIManager uiManager;   // UI 매니저 호출
 
     static GameManager gameManager;
 
@@ -20,7 +21,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameManager = this;
+        uiManager = FindObjectOfType<UIManager>();
         Time.timeScale = 0.0f; // 중력 때문에 게임을 일시정지 시킴
+    }
+
+    private void Start()
+    {
+        uiManager.UpdateScore(0); // 점수 초기화
     }
 
     private void Update()
@@ -47,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         _currentScore += score;
+        uiManager.UpdateScore(_currentScore);
     }
 
 }

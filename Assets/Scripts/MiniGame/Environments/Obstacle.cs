@@ -6,12 +6,12 @@ using Random = UnityEngine.Random; // 랜덤 사용
 public class Obstacle : MonoBehaviour
 {
     // === 장애물 위치 ===
-    private float highPosY = 1f;
-    private float lowPosY = -1f;
+    private float highPosY = 1.5f;
+    private float lowPosY = -1.5f;
 
     // === 통과할 구멍 ===
-    private float holeSizeMin = 2.0f;
-    private float holeSizeMax = 2.8f;
+    private float holeSizeMin = 3.5f;
+    private float holeSizeMax = 5.0f;
 
     // 위 아래 장애물 들고옴
     public Transform topObject;
@@ -19,6 +19,13 @@ public class Obstacle : MonoBehaviour
 
     // === 장애물 사이의 거리 ===
     public float widthPadding = 3.5f;
+
+    // === GameManager 선언 ===
+    GameManager gameManager;
+    public void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     // === 장애물 랜덤 위치 설정 ===
     public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
@@ -35,5 +42,16 @@ public class Obstacle : MonoBehaviour
         transform.position = placePosition;
 
         return placePosition;
+    }
+
+    // === 플레이어가 지나갈 경우 점수 획득 ===
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            gameManager.AddScore(1);
+            Debug.Log("플레이어 지나감 +1점");
+        }
+
     }
 }

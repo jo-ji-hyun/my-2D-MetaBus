@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 961659060095647021}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 0.43, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 1.08, y: 0.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3927906082505322488}
@@ -204,10 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5858656c7efaca4ea0b22aa3b00d8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highPosY: 2
-  lowPosY: -2
-  holeSizeMin: 1
-  holeSizeMax: 3
   topObject: {fileID: 5524636925739491306}
   bottomObject: {fileID: 4994895162372002583}
   widthPadding: 3.5
@@ -283,8 +279,8 @@ Transform:
   m_GameObject: {fileID: 3578385587899617693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.08, y: -0.46, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 1.08, y: -0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3927906082505322488}
