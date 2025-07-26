@@ -50,7 +50,6 @@ public class Obstacle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameManager.AddScore(1);
-            Debug.Log("플레이어 지나감 +1점");
         }
 
     }
