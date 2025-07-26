@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public string MainScene;    // 게임 오버시 메인씬 호출
+    [SerializeField] private string mainSceneName = "MainScene";     
+    [SerializeField] private string miniGameSceneName = "MiniGameScene";
 
-    UIManager uiManager;
-    UIHelper uIHelper;
+    private UIManager uiManager;
+    private UIHelper uiHelper;
 
-    static GameManager gameManager;
-
-    private bool _miniGameZone = false;
+    private bool _miniGameZone;
     private int _currentScore;
-    private int _FinalScore = 0;
+    private int _FinalScore;
 
     public static GameManager Instance { get; private set; } // 싱글톤 선언
 
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
 
         uiManager = FindObjectOfType<UIManager>();
-        uIHelper = FindObjectOfType <UIHelper>();
+        uiHelper = FindObjectOfType <UIHelper>();
 
         // === 싱글톤 선언 2 ===
         if (Instance != null && Instance != this)
@@ -33,55 +33,68 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드
+
         Time.timeScale = 0.0f; // 중력 때문에 게임을 일시정지 시킴
     }
 
     private void Start()
     {
-        uIHelper.Setactive(1);
-        string currentSceneName = SceneManager.GetActiveScene().name; // 현재 Scene의 이름을 받아옴
-
-        if (currentSceneName == "MiniGameScene")
-        {
-            _miniGameZone = true;
-            uiManager.UpdateScore(0); // 점수 초기화
-        }
-        else if(currentSceneName == "MainScene")
-        {
-            Debug.Log(_FinalScore);
-            Time.timeScale = 1.0f;
-
-            if (_FinalScore != 0)
-            {
-                uIHelper.Setactive(0);
-                _FinalScore = PlayerPrefs.GetInt("FinalScore", 0);
-                uIHelper.ViewScoreBoard(_FinalScore);
-            }
-
-        }
-
+        uiHelper.Setactive(1); // 미니게임 점수판 끄기
     }
 
     private void Update()
     {
         if (Input.anyKeyDown && _miniGameZone == true) // 미니게임에서 아무키나 누르면 시작함
         {
-            uiManager.Setactive(1); // 설명창 끄기
             GameStart();
+        }
+    }
+    private void OnDestroy()
+    {
+        // GameManager 오브젝트가 파괴될 때 이벤트 구독 해제 (클린업)
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // === 현재 씬 로드 ===
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        if (scene.name == miniGameSceneName)
+        {
+            uiManager = FindObjectOfType<UIManager>();
+            _miniGameZone = true;
+            _currentScore = 0; // 점수 초기화
+        }
+        else if (scene.name == mainSceneName)
+        {
+            uiHelper = FindObjectOfType<UIHelper>();
+            Time.timeScale = 1.0f; // 움직임을 위해
+            _miniGameZone = false;
+
+            if (_FinalScore != 0)
+            {
+                uiHelper.Setactive(0); // 미니게임 점수판 켜기
+                _FinalScore = PlayerPrefs.GetInt("FinalScore", 0);
+                uiHelper.ViewScoreBoard(_FinalScore);
+            }
         }
     }
 
     public void GameStart()
     {
         Plane._isMoving = true;
+        _miniGameZone = false;
         Time.timeScale = 1.0f;
+        uiManager.Setactive(1); // 설명창 끄기
     }
 
     public void GameOver()
     {
         PlayerPrefs.SetInt("FinalScore", _currentScore);
-        PlayerPrefs.Save(); 
-        SceneManager.LoadScene(MainScene);
+        PlayerPrefs.Save();
+        Debug.Log("최고점수 저장");
+        SceneManager.LoadScene(mainSceneName);
     }
 
     public void AddScore(int score)

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour //미니게임 점수 UI
 {
     public GameObject title;           // 설명창 호출
     public TextMeshProUGUI scoreText;  // 점수
@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
         else
         {
             title.SetActive(false);
+            Debug.Log("설명창 닫을게~");
         }
             
     }

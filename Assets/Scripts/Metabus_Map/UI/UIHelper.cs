@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIHelper : MonoBehaviour
+public class UIHelper : MonoBehaviour // 메타버스 점수 UI
 {
     public GameObject title;           // 설명창 호출
     public TextMeshProUGUI scoreText;  // 점수

@@ -155,52 +155,6 @@ Transform:
   - {fileID: 1519139511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &235693661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 235693663}
-  - component: {fileID: 235693664}
-  m_Layer: 0
-  m_Name: UIHelper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &235693663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235693661}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &235693664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235693661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6aff376405defd4f8efd06980dcf5ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 536929812}
-  scoreText: {fileID: 554618807}
 --- !u!1 &453456167
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 536929813}
+  - component: {fileID: 536929814}
   m_Layer: 0
   m_Name: ScoreBoard
   m_TagString: Untagged
@@ -496,6 +451,20 @@ Transform:
   - {fileID: 453456168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536929814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536929812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6aff376405defd4f8efd06980dcf5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 536929812}
+  scoreText: {fileID: 554618807}
 --- !u!1 &554618805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dca503576849284d99ae35c7a98dfef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainScene: MainScene
+  mainSceneName: MainScene
+  miniGameSceneName: MiniGameScene
 --- !u!4 &953784849
 Transform:
   m_ObjectHideFlags: 0
@@ -7159,4 +7129,3 @@ SceneRoots:
   - {fileID: 95503604}
   - {fileID: 2141466051}
   - {fileID: 536929813}
-  - {fileID: 235693663}
