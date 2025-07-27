@@ -44,7 +44,12 @@ public class WarpGate : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _isPlayerInArea = false;
-            signboard.SetActive(false);
+
+            if(signboard != null)
+            {
+                signboard.SetActive(false);
+            }
+
         }
     }
 
