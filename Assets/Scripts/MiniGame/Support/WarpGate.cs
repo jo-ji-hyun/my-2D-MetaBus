@@ -10,7 +10,7 @@ public class WarpGate : MonoBehaviour
 
     public Vector3 warpAreaSize = new Vector3(3f, 3f, 0f);
 
-    public string MiniGameScene;       // 미니 게임 씬 호출
+    public string MiniGameScene;          // 미니 게임 씬 호출
 
     public GameObject signboard;           // (F키를 누르세요) 간판
 
@@ -23,9 +23,9 @@ public class WarpGate : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = GizmoColor;
+        Gizmos.color = GizmoColor; // 기즈모 컬러 확정
 
-        Gizmos.DrawCube(transform.position, warpAreaSize);
+        Gizmos.DrawCube(transform.position, warpAreaSize); // 네모로 그림
     }
 
     // === 플레이어가 기즈모에 들어옴 ===
@@ -35,7 +35,6 @@ public class WarpGate : MonoBehaviour
         {
             _isPlayerInArea = true;
             signboard.SetActive(true);
-            Debug.Log("이동을 위해 F키를 누르세요.");
         }
     }
 
@@ -46,7 +45,6 @@ public class WarpGate : MonoBehaviour
         {
             _isPlayerInArea = false;
             signboard.SetActive(false);
-            Debug.Log("영역을 벗어남.");
         }
     }
 

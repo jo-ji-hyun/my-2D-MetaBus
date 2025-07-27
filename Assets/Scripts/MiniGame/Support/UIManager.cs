@@ -11,14 +11,7 @@ public class UIManager : MonoBehaviour //미니게임 점수 UI
 
     public void Start()
     {
-        if (scoreText == null)
-        {
-            Debug.Log("점수넣을 곳이 없어용");
-        }
-        if (title == null)
-        {
-            Debug.Log("점수판이 없어용");
-        }
+
     }
     public void UpdateScore(int score)
     {

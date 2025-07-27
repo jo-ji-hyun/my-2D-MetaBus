@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f; // 처음 시작시
     }
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (Input.anyKeyDown && _miniGameStart == true) // 미니게임에서 아무키나 누르면 시작함
