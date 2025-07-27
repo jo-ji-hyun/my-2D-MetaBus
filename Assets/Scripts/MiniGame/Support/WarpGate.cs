@@ -10,9 +10,16 @@ public class WarpGate : MonoBehaviour
 
     public Vector3 warpAreaSize = new Vector3(3f, 3f, 0f);
 
-    public string MiniGameScene;
+    public string MiniGameScene;       // 미니 게임 씬 호출
 
-    private bool _isPlayerInArea = false;
+    public GameObject signboard;           // (F키를 누르세요) 간판
+
+    private bool _isPlayerInArea = false;   // 플레이어 확인
+
+    private void Awake()
+    {
+        signboard.SetActive(false);
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -27,7 +34,19 @@ public class WarpGate : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _isPlayerInArea = true;
-           Debug.Log("이동을 위해 F키를 누르세요.");
+            signboard.SetActive(true);
+            Debug.Log("이동을 위해 F키를 누르세요.");
+        }
+    }
+
+    // === 플레이어가 기즈모에서 나감
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _isPlayerInArea = false;
+            signboard.SetActive(false);
+            Debug.Log("영역을 벗어남.");
         }
     }
 
