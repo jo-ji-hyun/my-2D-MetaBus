@@ -81,11 +81,16 @@ public class Plane : MonoBehaviour
     // === Ãæµ¹½Ã »ç¸Á ===
     public void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (isDead)
-            return;
+        { 
+            return; 
+        }
 
-        _animator.SetTrigger("isDie");
-        isDead = true;
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            _animator.SetTrigger("isDie");
+            isDead = true;
+        }
+
     }
 }
