@@ -21,17 +21,6 @@ public class Plane : MonoBehaviour
     {
         _animator = transform.GetComponentInChildren<Animator>();  // 애니메이터는 자식한테서 가져옴
         _rigidbody = GetComponent<Rigidbody2D>();                    // Rigidbody 2D는 내꺼 씀
-
-        // === 혹시 안될까봐 ===
-        if (_animator == null)
-        {
-            Debug.LogError("Not Founded Animator");
-        }
-
-        if (_rigidbody == null)
-        {
-            Debug.LogError("Not Founded Rigidbody");
-        }
     }
 
     void Update()

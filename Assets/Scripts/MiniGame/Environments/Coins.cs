@@ -6,10 +6,10 @@ using static UnityEditor.PlayerSettings;
 public class Coins : MonoBehaviour
 {
     // === 코인 위치 ===
-    [SerializeField] private float highPosY = 1.0f;
-    [SerializeField] private float lowPosY = -1.0f;
+    [SerializeField] private float highPosY = 1.5f;
+    [SerializeField] private float lowPosY = -1.5f;
 
-    // === 장애물 사이의 거리 ===
+    // === 코인 사이의 거리 ===
     public float widthPadding = 12.0f;
 
     // === 코인의 위치 저장 ===
@@ -36,7 +36,7 @@ public class Coins : MonoBehaviour
         }
         else
         {
-            SpawnCoin(_lastCoinPosition * 2);
+            SpawnCoin(_lastCoinPosition + new Vector3 (widthPadding, 0));
         }
 
     }
@@ -47,7 +47,7 @@ public class Coins : MonoBehaviour
         // === 마지막 x 값에서 x값을 증가시켜 거리를 확보함 ===
         Vector3 placePosition = coinPosition + new Vector3(widthPadding, 0);
         
-        placePosition.y = Mathf.Clamp(placePosition.y, lowPosY, highPosY);
+        placePosition.y = Random.Range(lowPosY, highPosY);
         transform.position = placePosition;
     }
 }

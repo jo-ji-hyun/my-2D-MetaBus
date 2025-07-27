@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 pos = transform.position;
 
-        // === 1. 기존의 카메라 위치에 x 거리를 더함 ===
+        // === 1. 기존의 카메라 위치에 x, y 거리를 더함 ===
         pos.x = target.position.x + _offsetX;
         pos.y = target.position.y + _offsetY;
 
