@@ -22,7 +22,6 @@ public class Plane : MonoBehaviour
         _animator = transform.GetComponentInChildren<Animator>();  // 애니메이터는 자식한테서 가져옴
         _rigidbody = GetComponent<Rigidbody2D>();                    // Rigidbody 2D는 내꺼 씀
 
-
         // === 혹시 안될까봐 ===
         if (_animator == null)
         {
@@ -77,7 +76,6 @@ public class Plane : MonoBehaviour
 
     }
 
-
     // === 충돌시 사망 ===
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -91,6 +89,5 @@ public class Plane : MonoBehaviour
             _animator.SetTrigger("isDie");
             isDead = true;
         }
-
     }
 }

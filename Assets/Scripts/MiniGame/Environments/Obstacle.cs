@@ -22,6 +22,7 @@ public class Obstacle : MonoBehaviour
 
     // === GameManager ¼±¾ð ===
     GameManager gameManager;
+
     public void Start()
     {
         gameManager = GameManager.Instance;
