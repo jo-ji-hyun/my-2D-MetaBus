@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Renderer characterRenderer; // 색깔 랜더러
 
-    // Update is called once per frame
-    void Update()
+    public Color defaultColor = Color.white; // 기본
+
+    // === 색깔 정의 ===
+    public Color redColor = Color.red;       
+    public Color blueColor = Color.blue;
+
+    public void ToChangeColor()
     {
-        
+        Debug.Log("컬러체인지");
+        characterRenderer.material.color = redColor;
     }
 }
