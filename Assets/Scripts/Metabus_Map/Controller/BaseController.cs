@@ -15,6 +15,8 @@ public class BaseController : MonoBehaviour
     public Vector2 Move { get { return _move; } }
     public Vector2 look { get { return _look; } }
 
+    public ChangeCharacter characterform;
+
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>(); // 컴퍼넌트에서 값을 가져옴
@@ -37,8 +39,14 @@ public class BaseController : MonoBehaviour
 
     private void Movement(Vector2 direction)
     {
-        direction = 5 * direction;       // 속도 조절
-
+        if (characterform != null && characterform.Isdragonform) // 드래곤 일경우
+        {
+            direction = 10 * direction;
+        }
+        else
+        {
+            direction = 5 * direction;       // 기본 캐릭터 속도 조절
+        }
         _rigidbody.velocity = direction; // rigidbody에서 속도 수치 조절
     }
 

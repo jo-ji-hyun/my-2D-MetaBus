@@ -9,8 +9,8 @@ public class ChangeCharacter : MonoBehaviour
     public Sprite defaultCharacterSprite; // 기본
     public Sprite dragonCharacterSprite;  // 드래곤
 
-    private bool _default = true; // 원래대로 돌리기 위해 bool형식 이용
-
+    private bool _default = true;      // 원래대로 돌리기 위해 bool형식 이용
+    public bool Isdragonform = false;  // 드래곤 상태 확인
     public void ChangeToDragon() // 변신!
     {
         if (!UnlockManager.IsOutUnlocked(UnlockManager.DRAGON_UNLOCKED_KEY)) // 키 확인
@@ -25,11 +25,13 @@ public class ChangeCharacter : MonoBehaviour
             {
                 character.sprite = dragonCharacterSprite;
                 _default = false;
+                Isdragonform = true;
             }
             else
             {
                 character.sprite = defaultCharacterSprite;
                 _default = true;
+                Isdragonform = false;
             }
         }
     }
