@@ -54,4 +54,12 @@ public class UnlockManager : MonoBehaviour
             Debug.Log("점수 25점 달성! 드래곤 외형 해금!");
         }
     }
+
+    // === 실험용 키삭제 ===
+    public static void ResetUnlocks()
+    {
+        // 특정 키들만 삭제하고 싶다면 아래처럼 각각 DeleteKey를 호출합니다.
+        PlayerPrefs.DeleteKey(DRAGON_UNLOCKED_KEY);
+        PlayerPrefs.Save();
+    }
 }

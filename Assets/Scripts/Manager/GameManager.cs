@@ -52,6 +52,15 @@ public class GameManager : MonoBehaviour
             uiHelper.Setactive(1);                         // 미니게임 점수판 끄기
         }
 
+        // === 확인용 R키 ===
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (UnlockManager.Instance != null) // UnlockManager가 싱글톤으로 잘 설정되어 있는지 확인
+            {
+                UnlockManager.ResetUnlocks();
+                Debug.Log("R 키로 드래곤 해금 상태 초기화됨.");
+            }
+        }
     }
     private void OnDestroy()
     {

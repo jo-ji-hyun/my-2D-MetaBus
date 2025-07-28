@@ -13,7 +13,9 @@ public class ChangeCharacter : MonoBehaviour
 
     private bool _default = true;      // 원래대로 돌리기 위해 bool형식 이용
     public bool Isdragonform = false;  // 드래곤 상태 확인
-    public void ChangeToDragon() // 변신!
+
+    // === 드래곤 변신! ===
+    public void ChangeToDragon() 
     {
         if (!UnlockManager.IsOutUnlocked(UnlockManager.DRAGON_UNLOCKED_KEY)) // 키 확인
         {
