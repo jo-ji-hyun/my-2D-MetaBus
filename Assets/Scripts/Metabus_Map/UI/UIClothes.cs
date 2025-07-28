@@ -34,9 +34,15 @@ public class UIClothes : MonoBehaviour
 
     }
 
-    public void ChangeColorControll() // 색깔 바꾸기 버튼
+    public void ChangeColorControllR() // 색깔 바꾸기 버튼 R
     {
         if(_changeColor != null)
-        _changeColor.ToChangeColor();
+           _changeColor.ToChangeColorRed();
+    }
+
+    public void ChangeColorControllB() // 색깔 바꾸기 버튼 B
+    {
+        if (_changeColor != null)
+            _changeColor.ToChangeColorBlue();
     }
 }
