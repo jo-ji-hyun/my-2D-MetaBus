@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ChangeCharacter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public SpriteRenderer character;
 
-    // Update is called once per frame
-    void Update()
+    public Sprite defaultCharacterSprite; // 기본
+    public Sprite dragonCharacterSprite;  // 드래곤
+
+    public void ChangeToDragon()
     {
-        
+        Debug.Log("캐릭변신!");
+        if (character != null)
+        {
+            character.sprite = dragonCharacterSprite;
+        }
     }
 }

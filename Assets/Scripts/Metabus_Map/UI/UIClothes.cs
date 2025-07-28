@@ -9,6 +9,7 @@ public class UIClothes : MonoBehaviour
     private bool _isopen = false; // 열려있는지 확인
 
     public ChangeColor _changeColor;
+    public ChangeCharacter _changeCharacter;
 
     private void Start() 
     {
@@ -44,5 +45,11 @@ public class UIClothes : MonoBehaviour
     {
         if (_changeColor != null)
             _changeColor.ToChangeColorBlack();
+    }
+
+    public void ChangeCharacterControllD()
+    {
+        if (_changeCharacter != null)
+            _changeCharacter.ChangeToDragon();
     }
 }
