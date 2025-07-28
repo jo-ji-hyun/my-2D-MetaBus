@@ -8,7 +8,7 @@ public class UIClothes : MonoBehaviour
 
     private bool _isopen = false; // 열려있는지 확인
 
-    ChangeColor _changeColor;
+    public ChangeColor _changeColor;
 
     private void Start() 
     {
@@ -36,7 +36,7 @@ public class UIClothes : MonoBehaviour
 
     public void ChangeColorControll() // 색깔 바꾸기 버튼
     {
-        Debug.Log("버튼누름");
+        if(_changeColor != null)
         _changeColor.ToChangeColor();
     }
 }
