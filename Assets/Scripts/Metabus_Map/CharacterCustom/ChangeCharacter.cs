@@ -9,12 +9,15 @@ public class ChangeCharacter : MonoBehaviour
     public Sprite defaultCharacterSprite; // 기본
     public Sprite dragonCharacterSprite;  // 드래곤
 
+    public GameObject jamulsoe; // 자물쇠 이미지 (캐릭 해금 전)
+
     private bool _default = true;      // 원래대로 돌리기 위해 bool형식 이용
     public bool Isdragonform = false;  // 드래곤 상태 확인
     public void ChangeToDragon() // 변신!
     {
         if (!UnlockManager.IsOutUnlocked(UnlockManager.DRAGON_UNLOCKED_KEY)) // 키 확인
         {
+            jamulsoe.SetActive(true);
             Debug.LogWarning("해금 조건 미니게임 25점 이상");
             return; // 해금되지 않았으면 함수 종료
         }
