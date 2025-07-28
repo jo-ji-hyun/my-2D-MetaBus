@@ -6,17 +6,17 @@ public class ChangeColor : MonoBehaviour
 {
     public Renderer characterRenderer; // 색깔 랜더러
 
-    public Color defaultColor = Color.white; // 기본
+    public Color defaultColor = Color.white; // 기본 미니게임 이후 원래색으로 돌아옴
 
     // === 색깔 정의 ===
     public Color redColor = Color.red;       
-    public Color blueColor = Color.blue;
+    public Color blackColor = Color.black;
 
     private bool _default = true;
 
     void Start()
     {
-        // 게임 시작 시 캐릭터의 초기 색상을 defaultColor로 설정합니다.
+        // 게임 시작 시 캐릭터의 초기 색상을 defaultColor
         if (characterRenderer != null)
         {
             characterRenderer.material.color = defaultColor;
@@ -39,11 +39,11 @@ public class ChangeColor : MonoBehaviour
 
     }
 
-    public void ToChangeColorBlue() // 색깔 체인지 파랑
+    public void ToChangeColorBlack() // 색깔 체인지 블랙
     {
         if (_default == true)
         {
-            characterRenderer.material.color = blueColor;
+            characterRenderer.material.color = blackColor;
             _default = false;
         }
         else

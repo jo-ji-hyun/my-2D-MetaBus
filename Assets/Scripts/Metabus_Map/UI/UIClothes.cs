@@ -43,6 +43,6 @@ public class UIClothes : MonoBehaviour
     public void ChangeColorControllB() // 색깔 바꾸기 버튼 B
     {
         if (_changeColor != null)
-            _changeColor.ToChangeColorBlue();
+            _changeColor.ToChangeColorBlack();
     }
 }
