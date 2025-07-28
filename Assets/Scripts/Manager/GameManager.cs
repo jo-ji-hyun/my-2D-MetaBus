@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.ReorderableList.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,6 +105,11 @@ public class GameManager : MonoBehaviour
         // === 현재점수를 FinalScore로 저장합니다. ===
         PlayerPrefs.SetInt("FinalScore", _currentScore);
         PlayerPrefs.Save();
+
+        if (UnlockManager.Instance != null)
+        {
+            UnlockManager.Instance.CheckAndUnlockDragonOutfit(_currentScore); // 마지막으로 키 조건 확인
+        }
 
         SceneManager.LoadScene(mainSceneName); // 메인(메타버스)으로 이동
     }

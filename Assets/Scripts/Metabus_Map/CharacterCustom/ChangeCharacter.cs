@@ -13,6 +13,12 @@ public class ChangeCharacter : MonoBehaviour
 
     public void ChangeToDragon() // 변신!
     {
+        if (!UnlockManager.IsOutUnlocked(UnlockManager.DRAGON_UNLOCKED_KEY)) // 키 확인
+        {
+            Debug.LogWarning("드래곤 외형은 아직 해금되지 않았습니다!");
+            return; // 해금되지 않았으면 함수 종료
+        }
+
         if (character != null)
         {
             if (_default == true) 
