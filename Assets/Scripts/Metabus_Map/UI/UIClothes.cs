@@ -19,7 +19,7 @@ public class UIClothes : MonoBehaviour
 
     public void MenuControll()
     {
-        if (!_isopen)
+        if (_isopen == false)
         {
             clothes.SetActive(true);
             _isopen = true;
@@ -27,6 +27,7 @@ public class UIClothes : MonoBehaviour
         else
         {
             clothes.SetActive(false);
+            _isopen = false;
         }
 
     }
