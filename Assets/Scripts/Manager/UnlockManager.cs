@@ -45,12 +45,13 @@ public class UnlockManager : MonoBehaviour
         return PlayerPrefs.GetInt(Key, 0) == 1; // 기본값 0 (잠김)
     }
 
+    // === 드래곤 캐릭 해금 조건 ===
     public void CheckAndUnlockDragonOutfit(int Score)
     {
-        if (Score >= 10 && !IsOutUnlocked(DRAGON_UNLOCKED_KEY))
+        if (Score >= 25 && !IsOutUnlocked(DRAGON_UNLOCKED_KEY))
         {
             UnlockOutfit(DRAGON_UNLOCKED_KEY);
-            Debug.Log("점수 10점 달성! 드래곤 외형 해금!");
+            Debug.Log("점수 25점 달성! 드래곤 외형 해금!");
         }
     }
 }

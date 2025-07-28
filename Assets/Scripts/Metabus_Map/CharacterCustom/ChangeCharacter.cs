@@ -15,7 +15,7 @@ public class ChangeCharacter : MonoBehaviour
     {
         if (!UnlockManager.IsOutUnlocked(UnlockManager.DRAGON_UNLOCKED_KEY)) // 키 확인
         {
-            Debug.LogWarning("드래곤 외형은 아직 해금되지 않았습니다!");
+            Debug.LogWarning("해금 조건 미니게임 25점 이상");
             return; // 해금되지 않았으면 함수 종료
         }
 
