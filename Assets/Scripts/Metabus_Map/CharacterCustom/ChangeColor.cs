@@ -12,7 +12,7 @@ public class ChangeColor : MonoBehaviour
     public Color redColor = Color.red;       
     public Color blackColor = Color.black;
 
-    private bool _default = true;
+    private bool _default = true; // 원래대로 돌리기 위해 bool형식 이용
 
     void Start()
     {

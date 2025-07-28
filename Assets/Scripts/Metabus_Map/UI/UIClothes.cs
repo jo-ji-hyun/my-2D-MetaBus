@@ -47,7 +47,7 @@ public class UIClothes : MonoBehaviour
             _changeColor.ToChangeColorBlack();
     }
 
-    public void ChangeCharacterControllD()
+    public void ChangeCharacterControllD() // 용으로 변신
     {
         if (_changeCharacter != null)
             _changeCharacter.ChangeToDragon();

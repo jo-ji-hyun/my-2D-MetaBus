@@ -9,12 +9,22 @@ public class ChangeCharacter : MonoBehaviour
     public Sprite defaultCharacterSprite; // 기본
     public Sprite dragonCharacterSprite;  // 드래곤
 
-    public void ChangeToDragon()
+    private bool _default = true; // 원래대로 돌리기 위해 bool형식 이용
+
+    public void ChangeToDragon() // 변신!
     {
-        Debug.Log("캐릭변신!");
         if (character != null)
         {
-            character.sprite = dragonCharacterSprite;
+            if (_default == true) 
+            {
+                character.sprite = dragonCharacterSprite;
+                _default = false;
+            }
+            else
+            {
+                character.sprite = defaultCharacterSprite;
+                _default = true;
+            }
         }
     }
 }
