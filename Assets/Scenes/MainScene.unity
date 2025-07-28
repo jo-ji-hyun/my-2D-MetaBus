@@ -7144,6 +7144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1135421371}
+  - component: {fileID: 1135421372}
   m_Layer: 0
   m_Name: Clothes
   m_TagString: Untagged
@@ -7165,9 +7166,21 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1840097463}
-  - {fileID: 1727385963}
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135421372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135421370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f192815a752748a4170cab4e953d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clothes: {fileID: 1727385962}
 --- !u!1 &1250928895
 GameObject:
   m_ObjectHideFlags: 0
@@ -7178,7 +7191,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1250928896}
   - component: {fileID: 1250928898}
-  - component: {fileID: 1250928900}
   - component: {fileID: 1250928897}
   - component: {fileID: 1250928899}
   m_Layer: 5
@@ -7348,9 +7360,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f13f192815a752748a4170cab4e953d0, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 1135421372}
+        m_TargetAssemblyTypeName: UIClothes, Assembly-CSharp
+        m_MethodName: MenuControll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7360,19 +7372,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1250928900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250928895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f192815a752748a4170cab4e953d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 1727385962}
 --- !u!1 &1457962374
 GameObject:
   m_ObjectHideFlags: 0
@@ -7530,12 +7529,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727385962}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.94, y: 2.31, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -426.44, y: -234.19, z: 0}
   m_LocalScale: {x: 5.2103996, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1135421371}
+  m_Father: {fileID: 1840097463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1727385964
 SpriteRenderer:
@@ -7621,6 +7620,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1250928896}
+  - {fileID: 1727385963}
   m_Father: {fileID: 1135421371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

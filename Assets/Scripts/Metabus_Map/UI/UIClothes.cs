@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class UIClothes : MonoBehaviour
 {
-    public GameObject title;
+    public GameObject clothes; // 옷장
 
-    public void OpenMenu()
+    private bool _isopen = false; // 열려있는지 확인
+
+    private void Start()
     {
-        title.SetActive(true);
+        if (clothes != null)
+        {
+            _isopen = false;
+            clothes.SetActive(false);
+        }
     }
 
-    public void ClosedMenu()
+    public void MenuControll()
     {
-        title.SetActive(false);
+        if (!_isopen)
+        {
+            clothes.SetActive(true);
+            _isopen = true;
+        }
+        else
+        {
+            clothes.SetActive(false);
+        }
+
     }
+
 }
